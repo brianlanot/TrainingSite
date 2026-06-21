@@ -86,10 +86,13 @@ export default function Sidebar() {
       </div>
 
       <div className="space-y-4 pt-4 border-t border-emerald-800">
-        <button className="w-full bg-[#A36A3B] hover:bg-[#8F5B30] text-white text-sm font-medium py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors shadow-md">
+        <Link 
+          href="/resources"
+          className="w-full bg-[#A36A3B] hover:bg-[#8F5B30] text-white text-sm font-medium py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors shadow-md"
+        >
           <Download className="w-4 h-4" />
           Download Templates
-        </button>
+        </Link>
 
         <div className="space-y-1 text-sm text-emerald-100">
           <button className="w-full flex items-center gap-3 px-3 py-2 hover:bg-emerald-800/50 rounded-lg transition-colors text-left">
