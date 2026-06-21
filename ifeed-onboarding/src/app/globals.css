@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FAF9F5; /* Set your default soft cream background here */
+  --foreground: #171717;
+}
+
+@theme {
+  /* Extending your Tailwind v4 theme with iFeed design system colors */
+  --color-brand-green-deep: #1E5631;
+  --color-brand-green-light: #2E6F40;
+  --color-brand-green-tint: #8CB894;
+  --color-brand-brown: #A36A3B;
+  --color-brand-brown-hover: #8F5B30;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Keep the same light background in dark mode to match the design */
+    --background: #FAF9F5;
+    --foreground: #171717;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
