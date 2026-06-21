@@ -13,6 +13,7 @@ import {
   HelpCircle, 
   Download 
 } from "lucide-react";
+
 import { curriculumData } from "./curriculumData";
 
 const modules = [
