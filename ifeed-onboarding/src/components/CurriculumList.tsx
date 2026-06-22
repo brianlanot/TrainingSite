@@ -113,7 +113,7 @@ export default function CurriculumList() {
                 {/*Start Module Button*/}
                 <div className="pt-2">
                   <Link 
-                    href={`/modules`} 
+                    href={`/modules/${item.slug}`} 
                     className="block w-full bg-[#A36A3B] hover:bg-[#8F5B30] text-white text-center font-bold text-sm py-3 px-4 rounded-xl transition-colors shadow-xs tracking-wide"
                   >
                     Start Module
