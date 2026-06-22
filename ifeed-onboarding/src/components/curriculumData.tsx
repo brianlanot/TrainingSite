@@ -23,7 +23,7 @@ export const curriculumData: ModuleItem[] = [
   {
     id: 1,
     slug: "introduction",
-    title: "Module 1: Introduction",
+    title: "Introduction",
     lessonsCount: 3,
     duration: "20 min",
     objective: "Understand what iFeed V2 is, why it exists, and gain access to the platform using Google authentication.",
