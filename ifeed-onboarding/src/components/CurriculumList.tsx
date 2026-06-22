@@ -94,13 +94,11 @@ export default function CurriculumList() {
                       className="flex items-center justify-between bg-[#F1E8E4]/40 hover:bg-[#F1E8E4]/80 px-4 py-3 rounded-lg transition-colors"
                     >
                       <div className="flex items-center gap-3">
-                        {lesson.isCompleted ? (
+                        
                           <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                        ) : item.active ? (
-                          <PlayCircle className="w-4 h-4 text-gray-500" />
-                        ) : (
-                          <Lock className="w-4 h-4 text-gray-400" />
-                        )}
+                       
+                        
+                       
                         <span className="text-xs font-bold text-gray-700">
                           Lesson {idx + 1}: {lesson.title}
                         </span>
