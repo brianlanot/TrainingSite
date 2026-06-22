@@ -7,7 +7,7 @@ import Link from "next/link";
 
 
 export default function CurriculumList() {
-  const [expandedModules, setExpandedModules] = useState<number[]>([2]);
+  const [expandedModules, setExpandedModules] = useState<number[]>([]);
 
   const toggleModule = (id: number) => {
     if (expandedModules.includes(id)) {

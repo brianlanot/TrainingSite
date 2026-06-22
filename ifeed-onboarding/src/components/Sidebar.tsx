@@ -17,11 +17,11 @@ import {
 import { curriculumData } from "./curriculumData";
 
 const modules = [
-  { label: "Introduction", icon: GraduationCap, href: "/modules/1" },
-  { label: "Managing Ingredients", icon: Layers, href: "/modules/2" },
-  { label: "Learning Nutrients", icon: PawPrint, href: "/modules/3" },
-  { label: "Feed Formulation", icon: FlaskConical, href: "/modules/4" },
-  { label: "Advanced Features", icon: Award, href: "/modules/5" },
+  { label: "Introduction", icon: GraduationCap, href: "/modules/introduction" },
+  { label: "Managing Ingredients", icon: Layers, href: "/modules/ingredients" },
+  { label: "Learning Nutrients", icon: PawPrint, href: "/modules/nutrients" },
+  { label: "Feed Formulation", icon: FlaskConical, href: "/modules/formulation" },
+  { label: "Advanced Features", icon: Award, href: "/modules/advanced" },
 ];
 
 export default function Sidebar() {
