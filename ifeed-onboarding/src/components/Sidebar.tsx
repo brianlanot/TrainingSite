@@ -26,6 +26,11 @@ const modules = [
 
 export default function Sidebar() {
   const pathname = usePathname() || "/";
+
+  if (pathname === "/") {
+    return null; 
+  }
+
   const isModulesTab = pathname.startsWith("/modules");
 
   const parts = pathname.split("/");
