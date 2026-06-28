@@ -3,6 +3,12 @@ export interface TestCase {
   expectedResult: string;
 }
 
+export interface TestCaseGroup {
+  groupTitle: string;
+  headerLabels?: [string, string];
+  cases: TestCase[];
+}
+
 export interface Lesson {
   id: string;
   title: string;
@@ -11,7 +17,9 @@ export interface Lesson {
   summary: string;
   steps: string[];
   stepTitles?: string[];
+  stepDetails?: string[][];
   testCases?: TestCase[];
+  testCaseGroups?: TestCaseGroup[];
 }
 
 export interface ModuleItem {
@@ -87,59 +95,126 @@ export const curriculumData: ModuleItem[] = [
   {
     id: 2,
     slug: "ingredients",
-    title: "Managing ingredients",
-    lessonsCount: 4,
-    duration: "45 min",
-    objective: "Master Excel imports and ingredient library management.",
+    title: "Managing Ingredients",
+    lessonsCount: 3,
+    duration: "35 min",
+    objective: "Navigate the ingredients library, understand ingredient details, and import ingredient data from Excel.",
     completed: false,
     active: true,
     lessons: [
       {
         id: "2.1",
-        title: "Introduction to Feed Ingredients",
+        title: "Understanding the Ingredients Library",
         duration: "10 min",
         isCompleted: true,
-        summary: "Learn the main categories of feed ingredients and how to interpret nutritional labels.",
+        summary: "Learn how to view ingredient information including nutritional composition and availability.",
         steps: [
-          "Study ingredient categories such as energy, protein, and minerals.",
-          "Identify common nutrient values and their meanings.",
-          "Connect ingredient quality to feed performance."
+          "Displays each ingredient's: Name, Price (PHP/kg), Availability, Picture (optional), Ingredient Group, and Nutritional Composition."
+        ],
+        stepTitles: ["View Ingredient"],
+        testCases: [
+          { testCase: "Open an ingredient", expectedResult: "Ingredient details are displayed" },
+          { testCase: "View ingredient nutrition information", expectedResult: "Nutrient values are visible" },
+          { testCase: "View ingredient pricing information", expectedResult: "Price is displayed correctly" }
         ]
       },
       {
         id: "2.2",
-        title: "Navigating the Ingredient Library",
-        duration: "15 min",
+        title: "Searching and Filtering Ingredients",
+        duration: "5 min",
         isCompleted: true,
-        summary: "Explore the ingredient library and find the items you need for your feed plans.",
+        summary: "Use search, sorting, and filtering features to locate ingredients quickly.",
         steps: [
-          "Search and filter the ingredient list efficiently.",
-          "Inspect nutrient values for individual ingredients.",
-          "Bookmark or save frequently used items."
+          "Click the Search button.",
+          "Enter the name of the ingredient.",
+          "Filter the ingredient list using the Sort and Filter buttons."
+        ],
+        stepTitles: ["Click the Search button", "Enter the name of the ingredient", "Sort and Filter"],
+        testCaseGroups: [
+          {
+            groupTitle: "Search Test Cases",
+            headerLabels: ["Input", "Expected Result"],
+            cases: [
+              { testCase: "Rice Bran", expectedResult: "Rice Bran appears in results" },
+              { testCase: "Corn", expectedResult: "Ingredients containing \"Corn\" appear" },
+              { testCase: "Invalid ingredient name", expectedResult: "No results found message appears" },
+              { testCase: "Empty search field", expectedResult: "Complete ingredient list is displayed" }
+            ]
+          },
+          {
+            groupTitle: "Filter Test Cases",
+            headerLabels: ["Action", "Expected Result"],
+            cases: [
+              { testCase: "Filter by ingredient group", expectedResult: "Only ingredients from selected group appear" },
+              { testCase: "Sort A–Z", expectedResult: "Ingredients sorted alphabetically" },
+              { testCase: "Sort by price ascending", expectedResult: "Lowest priced ingredients appear first" },
+              { testCase: "Clear filters", expectedResult: "Complete ingredient list is restored" }
+            ]
+          }
         ]
       },
       {
         id: "2.3",
-        title: "Importing Ingredients from Excel",
-        duration: "12 min",
-        isCompleted: true,
-        summary: "Bring your ingredient data into the platform from an Excel spreadsheet.",
+        title: "Importing Ingredients from Excel (Admin Only)",
+        duration: "20 min",
+        isCompleted: false,
+        summary: "Import ingredient and nutrient data using an Excel template.",
         steps: [
-          "Format your Excel file with the required columns.",
-          "Upload the spreadsheet using the import tool.",
-          "Review and confirm the imported ingredient records."
-        ]
-      },
-      {
-        id: "2.4",
-        title: "Troubleshooting Formatting Errors",
-        duration: "8 min",
-        isCompleted: true,
-        summary: "Resolve common import issues and make sure your data is ready for use.",
-        steps: [
-          "Identify missing or incorrectly named columns.",
-          "Fix units and data formats in the Excel file.",
-          "Re-upload the corrected file and validate the results."
+          "Click the Import button to import ingredients with nutrient data from an Excel (.xlsx) file. Then click Choose File and select the ingredients Excel file.",
+          "Click Add New to create a new ingredient.",
+          "Click the Pencil icon to modify ingredient information and configure heavy constraints when necessary. Example: Cassava Meal ≤ 15% due to bloating risks.",
+          "Click the Delete Ingredient button or Trash icon.",
+          "Click the Export button to download ingredient and nutrient data.",
+          "Click the Search button.",
+          "Search for the desired ingredient.",
+          "Use Sort and Filter buttons to organize ingredient data."
+        ],
+        stepTitles: [
+          "Bulk Import from Excel (Admin)",
+          "Add Ingredient (Admin Only)",
+          "Edit Ingredient (Admin Only)",
+          "Delete Ingredient",
+          "Export to Excel (Admin)",
+          "Search for an Ingredient",
+          "Enter the Ingredient Name",
+          "Sort and Filter"
+        ],
+        testCaseGroups: [
+          {
+            groupTitle: "Import Test Cases",
+            cases: [
+              { testCase: "Upload valid Excel template", expectedResult: "Ingredients imported successfully" },
+              { testCase: "Upload file with missing columns", expectedResult: "Validation error displayed" },
+              { testCase: "Upload unsupported file type", expectedResult: "Upload rejected" },
+              { testCase: "Upload duplicate ingredient", expectedResult: "System handles duplicate based on import rules" }
+            ]
+          },
+          {
+            groupTitle: "Add / Edit / Delete Test Cases",
+            cases: [
+              { testCase: "Add valid ingredient", expectedResult: "Ingredient appears in library" },
+              { testCase: "Edit ingredient details", expectedResult: "Changes are saved" },
+              { testCase: "Delete ingredient", expectedResult: "Ingredient removed from list" },
+              { testCase: "Add heavy constraint", expectedResult: "Constraint saved successfully" }
+            ]
+          },
+          {
+            groupTitle: "Export Test Cases",
+            cases: [
+              { testCase: "Export ingredient library", expectedResult: "Excel file downloads successfully" },
+              { testCase: "Open exported file", expectedResult: "Data matches system records" }
+            ]
+          },
+          {
+            groupTitle: "Search & Filter Test Cases",
+            cases: [
+              { testCase: "Rice Bran", expectedResult: "Rice Bran appears in results" },
+              { testCase: "Corn", expectedResult: "Ingredients containing \"Corn\" appear" },
+              { testCase: "Invalid ingredient name", expectedResult: "No results found message appears" },
+              { testCase: "Filter by ingredient group", expectedResult: "Only ingredients from selected group appear" },
+              { testCase: "Sort A–Z", expectedResult: "Ingredients sorted alphabetically" }
+            ]
+          }
         ]
       }
     ]

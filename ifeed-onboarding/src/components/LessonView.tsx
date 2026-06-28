@@ -22,6 +22,7 @@ export default function LessonView({
   const steps = customSteps ?? lessonItem.steps;
   const stepTitles = customStepTitles ?? lessonItem.stepTitles;
   const testCases = lessonItem.testCases;
+  const testCaseGroups = lessonItem.testCaseGroups;
   const prevLesson = lessonIndex > 0 ? lessonIndex : null;
   const nextLesson = lessonIndex + 1 < moduleItem.lessons.length ? lessonIndex + 2 : null;
 
@@ -51,9 +52,10 @@ export default function LessonView({
 
       <div className="grid gap-8 lg:grid-cols-[1.8fr_1fr]">
         <div className="space-y-6">
-          {/* Overview */}
           <div className="bg-white rounded-3xl p-8 shadow-sm">
-            <div className="space-y-6">
+            <div className="space-y-8">
+
+              {/* Overview */}
               <div className="rounded-2xl border border-gray-200 bg-[#F8FAF7] p-6">
                 <div className="flex items-center gap-3 text-sm text-[#4A7A5A] font-semibold uppercase tracking-[0.16em] mb-4">
                   <PlayCircle className="w-4 h-4" />
@@ -90,7 +92,7 @@ export default function LessonView({
                 </div>
               )}
 
-              {/* Test Cases Table — only shown when testCases exist */}
+              {/* Single Test Cases Table */}
               {testCases && testCases.length > 0 && (
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 text-sm text-[#4A7A5A] font-semibold uppercase tracking-[0.16em]">
@@ -107,10 +109,7 @@ export default function LessonView({
                       </thead>
                       <tbody>
                         {testCases.map((tc, idx) => (
-                          <tr
-                            key={idx}
-                            className={idx % 2 === 0 ? "bg-white" : "bg-[#F8FAF7]"}
-                          >
+                          <tr key={idx} className={idx % 2 === 0 ? "bg-white" : "bg-[#F8FAF7]"}>
                             <td className="px-5 py-3 text-gray-700 border-t border-gray-100">{tc.testCase}</td>
                             <td className="px-5 py-3 text-gray-600 border-t border-gray-100">{tc.expectedResult}</td>
                           </tr>
@@ -118,6 +117,43 @@ export default function LessonView({
                       </tbody>
                     </table>
                   </div>
+                </div>
+              )}
+
+              {/* Multiple Test Case Groups */}
+              {testCaseGroups && testCaseGroups.length > 0 && (
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3 text-sm text-[#4A7A5A] font-semibold uppercase tracking-[0.16em]">
+                    <CheckSquare className="w-4 h-4" />
+                    Test Cases
+                  </div>
+                  {testCaseGroups.map((group, gIdx) => (
+                    <div key={gIdx} className="space-y-2">
+                      <h4 className="text-sm font-bold text-[#1E5631]">{group.groupTitle}</h4>
+                      <div className="overflow-hidden rounded-2xl border border-gray-200">
+                        <table className="w-full text-sm">
+                          <thead>
+                            <tr className="bg-[#1E5631] text-white">
+                              <th className="px-5 py-3 text-left font-semibold">
+                                {group.headerLabels ? group.headerLabels[0] : "Test Case"}
+                              </th>
+                              <th className="px-5 py-3 text-left font-semibold">
+                                {group.headerLabels ? group.headerLabels[1] : "Expected Result"}
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {group.cases.map((tc, idx) => (
+                              <tr key={idx} className={idx % 2 === 0 ? "bg-white" : "bg-[#F8FAF7]"}>
+                                <td className="px-5 py-3 text-gray-700 border-t border-gray-100">{tc.testCase}</td>
+                                <td className="px-5 py-3 text-gray-600 border-t border-gray-100">{tc.expectedResult}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               )}
 
@@ -148,6 +184,7 @@ export default function LessonView({
                   </Link>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
