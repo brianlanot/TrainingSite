@@ -38,7 +38,7 @@ export default function OnboardingPage() {
 
         {/*About Section*/}
         <section className="bg-[#fceeed]/95 backdrop-blur-md rounded-xl p-8 md:p-10 shadow-sm max-w-4xl mx-auto text-center md:text-left">
-          <h2 className="text-[#3a7c7c] font-bold text-xl mb-4">About iFeed V2</h2>
+          <h2 className="text-[#1E5631] font-bold text-xl mb-4">About iFeed V2</h2>
           <p className="text-gray-700 leading-relaxed text-sm">
             iFeed version 2 is a web-based feed formulation cost optimization system designed to assist carabao farmers in creating optimal feed formulations through ingredient and nutrient management. It utilizes the Simplex Algorithm to generate formulations based on nutritional requirements derived from user specifications. User specifications are made easier through a "google form like" survey to identify the proper feed nutrients the carabao needs. The system is purely focused on carabao feed formulations and formulation maintenance.
           </p>
@@ -48,7 +48,7 @@ export default function OnboardingPage() {
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {/* Feature 1 */}
           <div className="bg-[#fceeed]/95 backdrop-blur-md rounded-xl p-8 shadow-sm">
-            <div className="bg-[#788eab] w-10 h-10 rounded-lg flex items-center justify-center text-white mb-4">
+            <div className="bg-[#2B2D42] w-10 h-10 rounded-lg flex items-center justify-center text-white mb-4">
               <Wallet size={20} />
             </div>
             <h3 className="font-bold text-gray-900 mb-2">Cost Optimization</h3>
@@ -59,7 +59,7 @@ export default function OnboardingPage() {
 
           {/* Feature 2 */}
           <div className="bg-[#fceeed]/95 backdrop-blur-md rounded-xl p-8 shadow-sm">
-            <div className="bg-[#65997a] w-10 h-10 rounded-lg flex items-center justify-center text-white mb-4">
+            <div className="bg-[#2B2D42] w-10 h-10 rounded-lg flex items-center justify-center text-white mb-4">
               <FlaskConical size={20} />
             </div>
             <h3 className="font-bold text-gray-900 mb-2">Scientific Accuracy</h3>
@@ -70,7 +70,7 @@ export default function OnboardingPage() {
 
           {/* Feature 3 */}
           <div className="bg-[#fceeed]/95 backdrop-blur-md rounded-xl p-8 shadow-sm">
-            <div className="bg-[#6993b8] w-10 h-10 rounded-lg flex items-center justify-center text-white mb-4">
+            <div className="bg-[#2B2D42] w-10 h-10 rounded-lg flex items-center justify-center text-white mb-4">
               <Smartphone size={20} />
             </div>
             <h3 className="font-bold text-gray-900 mb-2">Mobile Responsive</h3>
@@ -81,7 +81,7 @@ export default function OnboardingPage() {
         </section>
 
         {/*How it Works Section*/}
-        <section className="bg-[#1E5631]/95 backdrop-blur-md rounded-xl p-8 md:p-10 shadow-sm max-w-4xl mx-auto">
+        <section className="bg-[#fceeed]/95 backdrop-blur-md rounded-xl p-8 md:p-10 shadow-sm max-w-4xl mx-auto">
           <div className="flex items-center gap-3 mb-8">
             <div className="w-1 h-6 bg-gray-900 rounded-full"></div>
             <h2 className="text-gray-900 font-bold text-xl">How it Works</h2>
@@ -90,34 +90,34 @@ export default function OnboardingPage() {
           <div className="space-y-6 pl-2">
             {/* Step 1 */}
             <div className="flex gap-4">
-              <div className="mt-1 text-[#fceeed]">
+              <div className="mt-1 text-[#1E5631]">
                 <Lock size={18} />
               </div>
               <div>
                 <h4 className="font-bold text-xs text-gray-900 tracking-wider mb-1">STEP 1: DATA INPUT</h4>
-                <p className="text-[#fceeed] text-sm">Define available raw materials and their current local market prices.</p>
+                <p className="text-gray-600 text-sm">Define available raw materials and their current local market prices.</p>
               </div>
             </div>
 
             {/* Step 2 */}
             <div className="flex gap-4">
-              <div className="mt-1 text-[#fceeed]">
+              <div className="mt-1 text-[#1E5631]">
                 <Lock size={18} />
               </div>
               <div>
                 <h4 className="font-bold text-xs text-gray-900 tracking-wider mb-1">STEP 2: OPTIMIZATION</h4>
-                <p className="text-[#fceeed] text-sm">The Simplex Algorithm calculates the least-cost combination that meets all nutritional needs.</p>
+                <p className="text-gray-600 text-sm">The Simplex Algorithm calculates the least-cost combination that meets all nutritional needs.</p>
               </div>
             </div>
 
             {/* Step 3 */}
             <div className="flex gap-4">
-              <div className="mt-1 text-[#fceeed]">
+              <div className="mt-1 text-[#1E5631]">
                 <Lock size={18} />
               </div>
               <div>
                 <h4 className="font-bold text-xs text-gray-900 tracking-wider mb-1">STEP 3: FORMULATION</h4>
-                <p className="text-[#fceeed] text-sm">Receive a detailed feeding blueprint ready for farm-wide implementation.</p>
+                <p className="text-gray-600 text-sm">Receive a detailed feeding blueprint ready for farm-wide implementation.</p>
               </div>
             </div>
           </div>
@@ -126,11 +126,11 @@ export default function OnboardingPage() {
       </div>
 
       {/* --- Footer --- */}
-      <footer className="bg-white/90 backdrop-blur-sm py-6 text-center border-t border-gray-200">
-        <p className="text-xs font-bold text-gray-800">
+      <footer className="bg-[#1E5631] backdrop-blur-sm py-6 text-center border-t border-gray-200">
+        <p className="text-xs font-bold text-gray-900">
           © 2026 - iFeed V2 Onboarding
         </p>
-        <p className="text-xs text-gray-500 mt-1">
+        <p className="text-xs text-[#fceeed] mt-1">
           Empowering Carabao Farmers with Feed Formulation
         </p>
       </footer>

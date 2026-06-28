@@ -6,7 +6,7 @@ export default function CurriculumPage() {
     <div className="max-w-5xl mx-auto space-y-6">
       
       {/* Hero Header Card */}
-      <div className="bg-brand-green-light rounded-2xl p-8 text-white relative overflow-hidden shadow-sm">
+      <div className="bg-[#1E5631] rounded-2xl p-8 text-white relative overflow-hidden shadow-sm">
         <div className="max-w-xl space-y-3 z-10 relative">
           <h1 className="text-4xl font-bold tracking-tight">iFeed V2 Onboarding Curriculum</h1>
           <p className="text-emerald-100 text-sm leading-relaxed">

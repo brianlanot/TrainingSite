@@ -89,21 +89,19 @@ export default function CurriculumList() {
                 {/*Lessons Stack List*/}
                 <div className="space-y-1">
                   {item.lessons.map((lesson, idx) => (
-                    <div 
+                    <Link 
                       key={lesson.id} 
-                      className="flex items-center justify-between bg-[#F1E8E4]/40 px-4 py-3 rounded-lg transition-colors"
+                      href={`/modules/${item.slug}/${idx + 1}`}
+                      className="flex items-center justify-between bg-[#F1E8E4]/40 hover:bg-[#F1E8E4]/80 px-4 py-3 rounded-lg transition-all duration-200 hover:translate-x-1 group"
                     >
                       <div className="flex items-center gap-3">
-                        
-                          <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                      
-                       
-                        <span className="text-sm font-bold text-gray-700">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 transition-transform duration-200 group-hover:scale-110" />
+                        <span className="text-sm font-bold text-gray-700 group-hover:text-gray-900 transition-colors">
                           Lesson {idx + 1}: {lesson.title}
                         </span>
                       </div>
-                      <span className="text-xs text-gray-500 font-medium">{lesson.duration}</span>
-                    </div>
+                      <span className="text-xs text-gray-500 font-medium group-hover:text-gray-700 transition-colors">{lesson.duration}</span>
+                    </Link>
                   ))}
                 </div>
 

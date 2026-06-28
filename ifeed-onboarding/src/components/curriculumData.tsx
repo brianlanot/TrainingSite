@@ -39,7 +39,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Explore the app layout and learn where modules, lessons, and resources are located.",
           "Identify how to move between the curriculum and module views.",
-          "See how your lesson progress is tracked." 
+          "See how your lesson progress is tracked."
         ]
       },
       {
@@ -51,7 +51,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Review key nutrients such as protein, energy, and fiber.",
           "Understand why these metrics matter for carabao health.",
-          "Connect nutrient science to the platform’s ingredient tools." 
+          "Connect nutrient science to the platform’s ingredient tools."
         ]
       },
       {
@@ -63,7 +63,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Open the Google sign-in flow from the login page.",
           "Grant the requested permissions to access the app.",
-          "Confirm that your account is connected and ready to use." 
+          "Confirm that your account is connected and ready to use."
         ]
       }
     ]
@@ -87,7 +87,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Study ingredient categories such as energy, protein, and minerals.",
           "Identify common nutrient values and their meanings.",
-          "Connect ingredient quality to feed performance." 
+          "Connect ingredient quality to feed performance."
         ]
       },
       {
@@ -99,7 +99,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Search and filter the ingredient list efficiently.",
           "Inspect nutrient values for individual ingredients.",
-          "Bookmark or save frequently used items." 
+          "Bookmark or save frequently used items."
         ]
       },
       {
@@ -111,7 +111,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Format your Excel file with the required columns.",
           "Upload the spreadsheet using the import tool.",
-          "Review and confirm the imported ingredient records." 
+          "Review and confirm the imported ingredient records."
         ]
       },
       {
@@ -123,7 +123,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Identify missing or incorrectly named columns.",
           "Fix units and data formats in the Excel file.",
-          "Re-upload the corrected file and validate the results." 
+          "Re-upload the corrected file and validate the results."
         ]
       }
     ]
@@ -147,7 +147,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Review how crude protein supports growth and production.",
           "Compare different energy sources used in feed.",
-          "See how protein and energy targets influence ingredient choice." 
+          "See how protein and energy targets influence ingredient choice."
         ]
       },
       {
@@ -159,7 +159,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Define dry matter intake and why it matters.",
           "Use body weight and productivity to estimate DMI.",
-          "Apply DMI to evaluate feed formulas." 
+          "Apply DMI to evaluate feed formulas."
         ]
       },
       {
@@ -171,7 +171,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Understand the role of fiber in digestion.",
           "Identify key minerals such as calcium and phosphorus.",
-          "Balance fiber and minerals in feed formulas." 
+          "Balance fiber and minerals in feed formulas."
         ]
       },
       {
@@ -183,7 +183,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Identify nutrient and ingredient constraints.",
           "Prioritize the most important limits in each formula.",
-          "Adjust recipes while keeping safety and performance goals." 
+          "Adjust recipes while keeping safety and performance goals."
         ]
       }
     ]
@@ -207,7 +207,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Review the goals of balanced feed formulation.",
           "Match ingredient nutrients to target requirements.",
-          "Draft a simple formula before refining it." 
+          "Draft a simple formula before refining it."
         ]
       },
       {
@@ -219,7 +219,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Compare ingredient protein and energy contributions.",
           "Adjust ratios to meet both targets.",
-          "Check the formula for nutrient balance." 
+          "Check the formula for nutrient balance."
         ]
       },
       {
@@ -231,7 +231,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Define the most important constraints for the recipe.",
           "Use constraints to narrow ingredient choices.",
-          "Select the most viable balanced formula." 
+          "Select the most viable balanced formula."
         ]
       },
       {
@@ -243,7 +243,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Verify the formula against targets and constraints.",
           "Evaluate cost and ingredient availability.",
-          "Adjust the recipe for better balance." 
+          "Adjust the recipe for better balance."
         ]
       }
     ]
@@ -267,7 +267,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Check formulas for nutrient and ingredient safety.",
           "Review validation alerts and recommendations.",
-          "Fix any issues before finalizing the formula." 
+          "Fix any issues before finalizing the formula."
         ]
       },
       {
@@ -279,7 +279,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Open the reporting dashboard and review key metrics.",
           "Use filters to focus on the data you need.",
-          "Apply insights to improve future plans." 
+          "Apply insights to improve future plans."
         ]
       },
       {
@@ -291,7 +291,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "Use templates and shortcuts to save time.",
           "Keep your ingredient library well organized.",
-          "Leverage advanced features for repeatable success." 
+          "Leverage advanced features for repeatable success."
         ]
       }
     ]

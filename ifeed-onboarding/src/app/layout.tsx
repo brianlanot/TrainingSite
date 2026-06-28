@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+import ResourcesSidebar from "../components/resourcesSidebar"; // Import the Resources sidebar
 import "./globals.css";
 
 export default function RootLayout({
@@ -10,8 +11,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = usePathname();
-  const hideSidebar = pathname === "/homepage";
+  const pathname = usePathname() || "";
+  const hideSidebar = pathname === "/homepage" || pathname === "/"; // Hide sidebar on homepage/root if needed
+
+  // Check if we are on the resources page
+  const isResourcesPage = pathname.startsWith("/resources");
 
   return (
     <html lang="en">
@@ -21,8 +25,11 @@ export default function RootLayout({
       >
         <Navbar />
         <div className="flex flex-1">
-          {!hideSidebar && <Sidebar />}
-          <main className="flex-1 overflow-y-auto p-8 bg-[url('/bg-pattern.png')] bg-cover bg-no-repeat">
+          {/* Dynamically swap the sidebar depending on the route */}
+          {!hideSidebar && (
+            isResourcesPage ? <ResourcesSidebar /> : <Sidebar />
+          )}
+          <main className={hideSidebar ? "flex-1 overflow-y-auto" : "flex-1 overflow-y-auto p-8 bg-[url('/bg-pattern.png')] bg-cover bg-no-repeat"}>
             {children}
           </main>
         </div>

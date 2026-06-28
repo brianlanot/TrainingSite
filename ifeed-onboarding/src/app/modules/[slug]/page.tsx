@@ -56,7 +56,7 @@ export default async function ModulePage({ params }: ModulePageProps) {
               <div className="h-10 w-10 rounded-2xl bg-[#E4F0E6] flex items-center justify-center text-sm font-bold text-[#2F5E3C]">{idx + 1}</div>
             </div>
             <p className="mt-4 text-sm leading-6 text-gray-600">{lesson.duration}</p>
-            <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#1E5631]">
+            <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#A36A3B]">
               Continue
               <ArrowRight className="w-4 h-4" />
             </div>
