@@ -112,7 +112,7 @@ export default function Sidebar() {
           className="w-full bg-[#A36A3B] hover:bg-[#8F5B30] text-white text-sm font-medium py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors shadow-md"
         >
           <Download className="w-4 h-4" />
-          Download Templates
+          Download Module
         </Link>
   
         <div className="space-y-1 text-sm text-emerald-100">

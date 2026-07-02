@@ -67,9 +67,9 @@ export const curriculumData: ModuleItem[] = [
         ],
         stepTitles: ["Sign Up", "Sign In", "Sign Out"],
         stepImages: [
-          ["/auth.png"],
+          ["/auth.jpg"],
           [""],
-          [""]
+          ["/signout.jpg"]
         ],
         testCases: [
           { testCase: "Sign up using a valid Google account", expectedResult: "User account is created and redirected to dashboard" },
@@ -85,11 +85,17 @@ export const curriculumData: ModuleItem[] = [
         isCompleted: true,
         summary: "Understand the main sections of the dashboard including Start Formulating, My Formulations, and the Ingredients Library.",
         steps: [
-          "Displays the list of active formulations either created by the user or shared with the user.",
-          "Shows the ingredients provided by the application."
+          "Shows the ingredients provided by the application.",
+          "Shows the nutritional information provided by the application",
+          "Displays the list of active formulations either created by the user or shared with the user."
+
         ],
-        stepTitles: ["Navigate through Start Formulating & My Formulations", "Navigate through Ingredients Library"],
-        
+        stepTitles: ["Navigate through Ingredients Library", "Navigate through Nutrients Library", "Navigate through Feed Formulation"],
+        stepImages: [
+          ["/navIngre.jpg"],
+          ["/navNutri.jpg"],
+          ["/navFormu.jpg"]
+        ],
         testCases: [
           { testCase: "Open Start Formulating", expectedResult: "Formulation options are displayed" },
           { testCase: "Open My Formulations", expectedResult: "User's formulations are displayed" },
@@ -116,9 +122,13 @@ export const curriculumData: ModuleItem[] = [
         isCompleted: true,
         summary: "Learn how to view ingredient information including nutritional composition and availability.",
         steps: [
-          "Displays each ingredient's: Name, Price (PHP/kg), Availability, Picture (optional), Ingredient Group, and Nutritional Composition."
+          "Displays each ingredient's: Name, Price (PHP/kg), Ingredient Group, and Nutritional Composition."
         ],
         stepTitles: ["View Ingredient"],
+        stepImages: [
+          ["/viewIngre.png"],
+
+        ],
         testCases: [
           { testCase: "Open an ingredient", expectedResult: "Ingredient details are displayed" },
           { testCase: "View ingredient nutrition information", expectedResult: "Nutrient values are visible" },
@@ -136,6 +146,12 @@ export const curriculumData: ModuleItem[] = [
           "Enter the name of the ingredient.",
           "Filter the ingredient list using the Sort and Filter buttons."
         ],
+        stepImages: [
+          ["/searchIngre.jpg"],
+          [""],
+          ["/sortIngre.jpg"]
+        ],
+        
         stepTitles: ["Click the Search button", "Enter the name of the ingredient", "Sort and Filter"],
         testCaseGroups: [
           {
@@ -230,60 +246,33 @@ export const curriculumData: ModuleItem[] = [
     id: 3,
     slug: "nutrients",
     title: "Understanding nutrients",
-    lessonsCount: 5,
-    duration: "60 min",
-    objective: "Explore primary nutritional metrics and feed constraints.",
+    lessonsCount: 1,
+    duration: "15 min",
+    objective: "Identify key nutrients used in carabao feed formulation and understand how they are organized within the system.    ",
     completed: false,
     active: false,
     lessons: [
       {
         id: "3.1",
-        title: "Crude Protein & Energy Requirements",
+        title: "Navigating the Nutrients Module",
         duration: "15 min",
         isCompleted: true,
-        summary: "Understand protein and energy needs for proper ration formulation.",
+        summary: "Understand nutrient abbreviations, descriptions, units, and nutrient groups.",
         steps: [
-          "Review how crude protein supports growth and production.",
-          "Compare different energy sources used in feed.",
-          "See how protein and energy targets influence ingredient choice."
-        ]
+          "Click the Nutrients section in the Sidebar.",
+          "View each nutrient's abbreviation, description, unit, and nutrient group.",
+          "Use the Search button to look up nutrients by name.",
+          "Sort by names or group and Filter nutrients using the Sort and Filter buttons."
+        ],
+        stepImages: [
+          ["/navNutri.jpg"],
+          ["/viewNutri.png"],
+          ["/searchNutri.jpg"],
+          ["/sortNutri.jpg"]
+        ],
+      
       },
-      {
-        id: "3.2",
-        title: "Dry Matter Intake (DMI) Calculations",
-        duration: "10 min",
-        isCompleted: true,
-        summary: "Calculate the amount of feed a carabao needs each day in dry matter form.",
-        steps: [
-          "Define dry matter intake and why it matters.",
-          "Use body weight and productivity to estimate DMI.",
-          "Apply DMI to evaluate feed formulas."
-        ]
-      },
-      {
-        id: "3.3",
-        title: "Fiber and Minerals in Carabao Diets",
-        duration: "15 min",
-        isCompleted: true,
-        summary: "Learn why fiber and minerals are essential for rumen health and overall balance.",
-        steps: [
-          "Understand the role of fiber in digestion.",
-          "Identify key minerals such as calcium and phosphorus.",
-          "Balance fiber and minerals in feed formulas."
-        ]
-      },
-      {
-        id: "3.4",
-        title: "Understanding Feed Constraints",
-        duration: "20 min",
-        isCompleted: true,
-        summary: "Explore formula constraints and how they shape practical ration design.",
-        steps: [
-          "Identify nutrient and ingredient constraints.",
-          "Prioritize the most important limits in each formula.",
-          "Adjust recipes while keeping safety and performance goals."
-        ]
-      }
+      
     ]
   },
   {
