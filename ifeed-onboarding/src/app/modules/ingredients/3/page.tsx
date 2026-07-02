@@ -1,22 +1,10 @@
 import LessonView from "../../../../components/LessonView";
 import { curriculumData } from "../../../../components/curriculumData";
 
+// This page sets up the third ingredients lesson for the learner.
 const moduleItem = curriculumData.find((module) => module.slug === "ingredients")!;
-const lessonIndex = 2;
-const summary = "Bring your ingredient data into the platform from an Excel spreadsheet.";
-const steps = [
-  "Format your Excel file with the required columns.",
-  "Upload the spreadsheet using the import tool.",
-  "Review and confirm the imported ingredient records.",
-];
 
+// Ingredients module details.
 export default function IngredientsLesson3Page() {
-  return (
-    <LessonView
-      moduleItem={moduleItem}
-      lessonIndex={lessonIndex}
-      customSummary={summary}
-      customSteps={steps}
-    />
-  );
+  return <LessonView moduleItem={moduleItem} lessonIndex={2} />;
 }

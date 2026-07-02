@@ -7,9 +7,14 @@ interface ModulePageProps {
   params: Promise<{ slug: string }>;
 }
 
+// This page gives learners a welcoming overview of a module before they dive into the lessons.
 export default async function ModulePage({ params }: ModulePageProps) {
   const { slug } = await params;
+
+  // Find the module that matches the current URL so the page can show the right lesson overview.
   const moduleItem = curriculumData.find((module) => module.slug === slug);
+
+  // If the module cannot be found, the page shows a clean not-found state instead of broken content.
   if (!moduleItem) notFound();
 
   return (
@@ -33,6 +38,7 @@ export default async function ModulePage({ params }: ModulePageProps) {
         </div>
       </div>
 
+      {/* These lesson cards make it easy for learners to jump into the next step and work through the module at their own pace. */}
       <div className="grid gap-6 sm:grid-cols-2">
         {moduleItem.lessons.map((lesson, idx) => (
           <Link

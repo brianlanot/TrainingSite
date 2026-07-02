@@ -7,21 +7,27 @@ interface LessonPageProps {
   params: Promise<{ slug: string; lesson: string }>;
 }
 
+ // Page that brings the selected module
 export default async function LessonPage({ params }: LessonPageProps) {
   const { slug, lesson } = await params;
+
+  // Matching module from the curriculum data, that show the right content.
   const moduleItem = curriculumData.find((mod) => mod.slug === slug);
   const lessonIndex = Number(lesson) - 1;
 
+  // If it cannot be found, the page shows a not found error.
   if (!moduleItem || Number.isNaN(lessonIndex) || lessonIndex < 0 || lessonIndex >= moduleItem.lessons.length) {
     notFound();
   }
 
+  // Specific lesson details and lessons as navigation options.
   const lessonItem = moduleItem.lessons[lessonIndex];
   const prevLesson = lessonIndex > 0 ? lessonIndex : null;
   const nextLesson = lessonIndex + 1 < moduleItem.lessons.length ? lessonIndex + 2 : null;
 
   return (
     <div className="max-w-6xl mx-auto space-y-6">
+      {/* Reading the lesson content. */}
       <div className="bg-white rounded-3xl p-8 shadow-sm">
         <div className="space-y-4">
 
@@ -38,6 +44,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
       </div>
 
       <div className="grid gap-8 lg:grid-cols-[1.8fr_1fr]">
+        {/* The walkthrough steps are front and center. */}
         <div className="space-y-8">
           <div className="bg-white rounded-3xl p-8 shadow-sm">
             <div className="space-y-6">
@@ -100,6 +107,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
           </div>
         </div>
 
+        {/* Materials and module context without pulling attention away from the lesson itself. */}
         <aside className="space-y-6">
           <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
             <h2 className="text-lg font-semibold text-[#1E5631]">Essential Documents</h2>
