@@ -1,9 +1,11 @@
 // src/app/resources/page.tsx
 "use client";
 
-import { useState, Suspense } from "react";
+
+import { Suspense } from "react";
 import { Download, BookOpen } from "lucide-react";
 import { useSearchParams } from "next/navigation";
+
 
 const resourcesData = [
   {
@@ -15,6 +17,7 @@ const resourcesData = [
     fileType: "PDF",
     icon: BookOpen,
     module: "introduction",
+    fileUrl: "/resources/Module_1_Getting_Started_with_iFeed_V2.pdf",
   },
   {
     id: "res-module-2",
@@ -25,6 +28,7 @@ const resourcesData = [
     fileType: "PDF",
     icon: BookOpen,
     module: "managing-ingredients",
+    fileUrl: "/resources/Module_2_Managing_Ingredients.pdf",
   },
   {
     id: "res-module-3",
@@ -35,6 +39,7 @@ const resourcesData = [
     fileType: "PDF",
     icon: BookOpen,
     module: "learning-nutrients",
+    fileUrl: "/resources/Module_3_Understanding_Nutrients.pdf",
   },
   {
     id: "res-module-4",
@@ -45,6 +50,7 @@ const resourcesData = [
     fileType: "PDF",
     icon: BookOpen,
     module: "feed-formulation",
+    fileUrl: "/resources/Module_4_Creating_and_Managing_Formulations.pdf",
   },
   {
     id: "res-module-5",
@@ -55,8 +61,10 @@ const resourcesData = [
     fileType: "PDF",
     icon: BookOpen,
     module: "advanced-features",
+    fileUrl: "/resources/Module_5_Advanced_Features.pdf",
   },
 ];
+
 
 const modulesInfo = [
   { id: 1, name: "Module 1: Introduction", slug: "introduction" },
@@ -66,27 +74,24 @@ const modulesInfo = [
   { id: 5, name: "Module 5: Advanced Features", slug: "advanced-features" },
 ];
 
+
 function ResourcesContent() {
   const searchParams = useSearchParams();
   const currentModule = searchParams.get("module") || "All";
 
-  // const [searchQuery] = useState("");
 
   // Filter raw resources based on selection context
   const filteredResources = resourcesData.filter((resource) => {
     const matchesModule = currentModule === "All" || resource.module === currentModule;
-
-    // Commented out search matching criteria logic
-    // const matchesSearch =
-    //   resource.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    //   resource.description.toLowerCase().includes(searchQuery.toLowerCase());
-
-    return matchesModule; /* && matchesSearch */
+    return matchesModule;
   });
+
 
   const displayedModules = modulesInfo.filter((mod) => currentModule === "All" || mod.slug === currentModule);
 
+
   const hasResources = filteredResources.length > 0;
+
 
   return (
     <div className="max-w-5xl mx-auto space-y-6">
@@ -100,13 +105,16 @@ function ResourcesContent() {
         </div>
       </div>
 
+
       {/* Separated & Sorted Module Lists */}
       {hasResources ? (
         <div className="space-y-10 mt-8">
           {displayedModules.map((mod) => {
             const moduleResources = filteredResources.filter((item) => item.module === mod.slug);
 
+
             if (moduleResources.length === 0) return null;
+
 
             return (
               <div key={mod.slug} className="space-y-4">
@@ -117,6 +125,7 @@ function ResourcesContent() {
                     {moduleResources.length} {moduleResources.length === 1 ? "file" : "files"}
                   </span>
                 </div>
+
 
                 {/* Grid layout rendered directly on page context */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -137,6 +146,7 @@ function ResourcesContent() {
                             </span>
                           </div>
 
+
                           <div className="space-y-1">
                             <h3 className="font-bold text-gray-800 text-lg group-hover:text-[#1E5631] transition-colors">
                               {item.title}
@@ -147,17 +157,19 @@ function ResourcesContent() {
                           </div>
                         </div>
 
+
                         <div className="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
                           <span className="text-[11px] font-medium text-gray-400">
                             File size: {item.fileSize}
                           </span>
-                          <button
-                            onClick={() => alert(`Triggering mock download for: ${item.title}`)}
+                          <a
+                            href={item.fileUrl}
+                            download
                             className="inline-flex items-center gap-2 rounded-xl bg-[#A36A3B]/10 hover:bg-[#A36A3B]/20 text-[#8B5A2B] font-bold text-xs px-4 py-2.5 transition-colors cursor-pointer"
                           >
                             Download File
                             <Download className="w-3.5 h-3.5" />
-                          </button>
+                          </a>
                         </div>
                       </div>
                     );
@@ -176,6 +188,7 @@ function ResourcesContent() {
   );
 }
 
+
 export default function ResourcesPage() {
   return (
     <Suspense fallback={<div className="text-center p-12 text-gray-500">Loading resources...</div>}>
@@ -183,3 +196,7 @@ export default function ResourcesPage() {
     </Suspense>
   );
 }
+
+
+
+

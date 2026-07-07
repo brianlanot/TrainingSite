@@ -7,32 +7,34 @@ interface LessonPageProps {
   params: Promise<{ slug: string; lesson: string }>;
 }
 
+// Page that brings the selected module
 export default async function LessonPage({ params }: LessonPageProps) {
   const { slug, lesson } = await params;
+
+  // Matching module from the curriculum data, that show the right content.
   const moduleItem = curriculumData.find((mod) => mod.slug === slug);
   const lessonIndex = Number(lesson) - 1;
 
+  // If it cannot be found, the page shows a not found error.
   if (!moduleItem || Number.isNaN(lessonIndex) || lessonIndex < 0 || lessonIndex >= moduleItem.lessons.length) {
     notFound();
   }
 
+  // Specific lesson details and lessons as navigation options.
   const lessonItem = moduleItem.lessons[lessonIndex];
+  if (!lessonItem) {
+    notFound();
+    return null;
+  }
   const prevLesson = lessonIndex > 0 ? lessonIndex : null;
   const nextLesson = lessonIndex + 1 < moduleItem.lessons.length ? lessonIndex + 2 : null;
 
   return (
     <div className="max-w-6xl mx-auto space-y-6">
+      {/* Reading the lesson content. */}
       <div className="bg-white rounded-3xl p-8 shadow-sm">
         <div className="space-y-4">
-          <div className="flex items-center justify-between gap-4">
-            <Link
-              href={`/modules/${slug}`}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-[#4E7B5A] hover:text-[#1E5631]"
-            >
-              <ChevronLeft className="w-4 h-4" />
-              Back to {moduleItem.title}
-            </Link>
-          </div>
+
           <div className="text-sm font-semibold uppercase tracking-[0.28em] text-[#4E7B5A]">
             Module {moduleItem.id}
           </div>
@@ -46,6 +48,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
       </div>
 
       <div className="grid gap-8 lg:grid-cols-[1.8fr_1fr]">
+        {/* The walkthrough steps are front and center. */}
         <div className="space-y-8">
           <div className="bg-white rounded-3xl p-8 shadow-sm">
             <div className="space-y-6">
@@ -66,11 +69,21 @@ export default async function LessonPage({ params }: LessonPageProps) {
                       {idx + 1}
                     </div>
                     <div>
-                      <div className="text-base font-semibold text-[#1E5631]">{idx + 1}. Step {idx + 1}</div>
+                      <div className="text-base font-semibold text-[#1E5631]">
+                        {idx + 1}. {lessonItem.stepTitles?.[idx] || `Step ${idx + 1}`}
+                      </div>
                       <p className="mt-2 text-gray-600 leading-7">
                         {stepText}
                       </p>
-                      {idx === 0 ? (
+                      {lessonItem.stepImages && lessonItem.stepImages[idx] ? (
+                        <div className="mt-4 rounded-3xl border border-[#D8E4D7] bg-white p-4">
+                      <img
+                        src={lessonItem.stepImages[idx] as unknown as string} // or just 'as any' if you're in a rush
+                        alt={lessonItem.stepTitles?.[idx] || `Step ${idx + 1}`}
+                        className="rounded-2xl w-full object-cover max-h-96"
+                      />
+                        </div>
+                      ) : idx === 0 ? (
                         <div className="mt-4 rounded-3xl border border-[#D8E4D7] bg-white p-4">
                           <div className="h-48 rounded-2xl bg-[#F3F6F3] flex items-center justify-center text-sm text-gray-400">
                             Screenshot / Media
@@ -108,6 +121,7 @@ export default async function LessonPage({ params }: LessonPageProps) {
           </div>
         </div>
 
+        {/* Materials and module context without pulling attention away from the lesson itself. */}
         <aside className="space-y-6">
           <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
             <h2 className="text-lg font-semibold text-[#1E5631]">Essential Documents</h2>

@@ -5,10 +5,11 @@ import { ChevronDown, ChevronUp, PlayCircle, CheckCircle2, Lock } from "lucide-r
 import { curriculumData } from "./curriculumData";
 import Link from "next/link";
 
-
+// This component turns the curriculum into a simple, expandable guide so learners can browse modules at their own pace.
 export default function CurriculumList() {
   const [expandedModules, setExpandedModules] = useState<number[]>([]);
 
+  // This helper opens or closes a module when the learner wants to see more details or hide them again.
   const toggleModule = (id: number) => {
     if (expandedModules.includes(id)) {
       setExpandedModules(expandedModules.filter((mId) => mId !== id));
@@ -21,6 +22,8 @@ export default function CurriculumList() {
     <div className="space-y-4 pt-2">
       {curriculumData.map((item) => {
         const isExpanded = expandedModules.includes(item.id);
+
+        // Each module card shows its lessons in a tidy way, making it easier to jump into the next topic.
 
         return (
           <div 

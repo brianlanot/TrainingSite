@@ -7,22 +7,21 @@ interface ModulePageProps {
   params: Promise<{ slug: string }>;
 }
 
+// This page gives learners a welcoming overview of a module before they dive into the lessons.
 export default async function ModulePage({ params }: ModulePageProps) {
   const { slug } = await params;
+
+  // Find the module that matches the current URL so the page can show the right lesson overview.
   const moduleItem = curriculumData.find((module) => module.slug === slug);
+
+  // If the module cannot be found, the page shows a clean not-found state instead of broken content.
   if (!moduleItem) notFound();
 
   return (
     <div className="max-w-5xl mx-auto space-y-6">
-      <div>
-        <Link
-          href="/curriculum"
-          className="inline-flex items-center gap-2 rounded-full border border-transparent bg-white/90 px-4 py-2 text-sm font-semibold text-[#1E5631] transition hover:bg-white"
-        >
-          <ChevronLeft className="w-4 h-4" />
-          Back to curriculum
-        </Link>
-      </div>
+      {/* A simple back link helps learners return to the full curriculum without feeling lost. */}
+
+      {/* This summary card introduces the module and gives learners a quick sense of what they are about to cover. */}
       <div className="rounded-3xl border border-[#D7E3D4] bg-[#F6FAF5] p-10 shadow-sm">
         <div className="space-y-4">
           <div className="text-sm font-semibold uppercase tracking-[0.28em] text-[#4E7B5A]">Module {moduleItem.id}</div>
@@ -41,6 +40,7 @@ export default async function ModulePage({ params }: ModulePageProps) {
         </div>
       </div>
 
+      {/* These lesson cards make it easy for learners to jump into the next step and work through the module at their own pace. */}
       <div className="grid gap-6 sm:grid-cols-2">
         {moduleItem.lessons.map((lesson, idx) => (
           <Link
