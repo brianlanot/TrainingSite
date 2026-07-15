@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { Suspense } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import ResourcesSidebar from "../components/resourcesSidebar"; // Import the Resources sidebar
@@ -27,7 +28,11 @@ export default function RootLayout({
         <div className="flex flex-1">
           {/* Dynamically swap the sidebar depending on the route */}
           {!hideSidebar && (
-            isResourcesPage ? <ResourcesSidebar /> : <Sidebar />
+            isResourcesPage ? (
+              <Suspense fallback={<div className="w-64 bg-[#1E5631] text-white p-6 h-[calc(100vh-4rem)] sticky top-16" />}>
+                <ResourcesSidebar />
+              </Suspense>
+            ) : <Sidebar />
           )}
           <main className={hideSidebar ? "flex-1 overflow-y-auto" : "flex-1 overflow-y-auto p-8 bg-[url('/bg-pattern.png')] bg-cover bg-no-repeat"}>
             {children}
