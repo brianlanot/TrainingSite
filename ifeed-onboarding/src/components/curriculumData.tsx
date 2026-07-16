@@ -242,14 +242,6 @@ export const curriculumData: ModuleItem[] = [
             ]
           }
         ]
-      },
-      {
-        id: "2.4",
-        title: "Exporting Ingredient Data",
-        duration: "5 min",
-        isCompleted: false,
-        summary: "Learn how to export ingredient and nutrient data to Excel for offline review or editing, and how to re-import updated files.",
-        steps: []
       }
     ]
   },
