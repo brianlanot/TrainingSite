@@ -564,7 +564,7 @@ export const curriculumData: ModuleItem[] = [
       {
         id: "5.1",
         title: "Advanced Interface",
-        duration: "10 min",
+        duration: "15 min",
         isCompleted: false,
         summary: "Learn how to use the Advanced Interface for detailed formulation configuration, including No Limits, Fixed (kg), and Manual Percentage (%) constraint types.",
         steps: [
