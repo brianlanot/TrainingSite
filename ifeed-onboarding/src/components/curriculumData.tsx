@@ -388,10 +388,10 @@ export const curriculumData: ModuleItem[] = [
           ["/createFormuS.jpg"],
           ["/mod4.1.2.jpg"],
           ["/mod4.1.3.jpg"],
-          ["/setupInitial.jpg"],
-          ["/configCarabao.jpg"],
-          ["/confirmInfo.jpg"],
-          ["/viewFormuS.jpg"]
+          ["/groupc1.jpg"],
+          ["/groupc2.jpg"],
+          ["/groupc3.jpg"],
+          ["/mod4.1.7.jpg"]
         ],
         testCaseGroups: [
           {
@@ -428,7 +428,7 @@ export const curriculumData: ModuleItem[] = [
           "Click Add Concentrate.\nSelect the desired ingredients.\nClick Add.\n\nTry: Ipil ipil leaves",
           "Click Add Vitamins Minerals.\nSelect the desired ingredients.\nClick Add.\n\nTry: Salt",
           "Use the Search Ingredients field.\nEnter the ingredient name.\nSelect the ingredient.\nClick Add.\n\nTry: Malungay",
-          "1. Click Edit/Update Parameters below the Save button.\n2.Update:\n  • Formulation Code\n   • Formulation Name\n   • Description\n   • Animal Group\n3. Expand View More Details if necessary.\n4. Refresh the page once done.\n\nTry:\nCode: Farmer1\nName: Cara1\nAnimal Group: Senior Bull\nBody Weight: 300 kg",
+          "1. Click Edit/Update Parameters below the Save button.\n2.Update:\n  • Formulation Code\n  • Formulation Name\n   • Description\n   • Animal Group\n3. Expand View More Details if necessary.\n4. Refresh the page once done.\n\nTry:\nCode: Farmer1\nName: Cara1\nAnimal Group: Senior Bull\nBody Weight: 300 kg",
           "Click the Trash icon beside an ingredient or nutrient.\n\nTry: Delete Malungay"
         ],
         stepImages: [
@@ -538,10 +538,10 @@ export const curriculumData: ModuleItem[] = [
           ["/runOptimization.jpg"],
           ["/breakdown.jpg"],
           ["/nutrients.jpg"],
+          ["/aiinsights1.jpg"],
           ["/generate.jpg"],
           ["/return.jpg"],
           ["/track.jpg", "/track2.jpg"],
-          ["/track.jpg"]
         ],
         testCases: [
           { testCase: "Optimize using Simplex Hard Constraint", expectedResult: "Optimal formulation computed with hard constraints applied" },
