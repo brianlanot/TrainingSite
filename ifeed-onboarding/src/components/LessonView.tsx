@@ -2,25 +2,74 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight, PlayCircle, CheckSquare } from "lucide-react";
 import type { ModuleItem } from "./curriculumData";
 
-/** Renders step text, splitting out any "Try:" note into a callout box. */
+/** Renders step text, splitting out any "Try:" note into a callout box and linkifying URLs. */
 function StepText({ text }: { text: string }) {
-  const tryIndex = text.indexOf("\n\nTry:");
-  if (tryIndex === -1) {
-    return <p className="mt-1 text-m text-gray-600 whitespace-pre-line">{text}</p>;
+  let mainText = text;
+  let tryText = "";
+  let linkUrl = "";
+
+  const linkMatch = mainText.match(/\n\nLink:\s*(https?:\/\/[^\s]+)/);
+  if (linkMatch) {
+    linkUrl = linkMatch[1];
+    mainText = mainText.replace(linkMatch[0], "").trim();
   }
-  const mainText = text.slice(0, tryIndex).trim();
-  const tryText = text.slice(tryIndex + 2).trim(); // skip the leading "\n\n"
+
+  const tryIndex = mainText.indexOf("\n\nTry:");
+  if (tryIndex !== -1) {
+    tryText = mainText.slice(tryIndex + 2).trim(); // keep "Try: ..."
+    mainText = mainText.slice(0, tryIndex).trim();
+  }
+
+  const renderText = (t: string) => {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    return t.split(urlRegex).map((part, i) => {
+      if (part.match(urlRegex)) {
+        return (
+          <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-[#4A7A5A] underline hover:text-[#1E5631] font-medium break-all">
+            {part}
+          </a>
+        );
+      }
+      return part;
+    });
+  };
+
+  const tryLines = tryText.split("\n");
+  const tryLabel = tryLines[0];
+  const tryRest = tryLines.slice(1).join("\n");
+
   return (
     <>
       {mainText && (
-        <p className="mt-1 text-m text-gray-600 whitespace-pre-line">{mainText}</p>
+        <p className="mt-1 text-m text-gray-600 whitespace-pre-line">{renderText(mainText)}</p>
       )}
-      <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3">
-        <p className="text-sm text-amber-800 whitespace-pre-line leading-relaxed">
-          <span className="font-bold">{tryText.split("\n")[0]}</span>
-          {tryText.includes("\n") ? "\n" + tryText.slice(tryText.indexOf("\n") + 1) : ""}
-        </p>
-      </div>
+
+      {linkUrl && (
+        <div className="mt-4 p-5 bg-[#F8FAF7] border border-[#D0E1D2] rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h4 className="text-[#1E5631] font-bold text-sm tracking-wide mb-1">External Link</h4>
+            <p className="text-sm text-gray-600">Access the iFeed V2 web application</p>
+          </div>
+          <a
+            href={linkUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-6 py-2.5 bg-[#4A7A5A] hover:bg-[#1E5631] text-white rounded-xl font-semibold transition-colors shadow-sm whitespace-nowrap"
+          >
+            Open Link
+          </a>
+        </div>
+      )}
+
+      {tryText && (
+        <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3">
+          <p className="text-sm text-amber-800 whitespace-pre-line leading-relaxed">
+            <span className="font-bold">{tryLabel}</span>
+            {tryRest ? "\n" : ""}
+            {renderText(tryRest)}
+          </p>
+        </div>
+      )}
     </>
   );
 }
@@ -51,7 +100,7 @@ export default function LessonView({
   const testCaseGroups = lessonItem?.testCaseGroups;
   const prevLesson = lessonIndex > 0 ? lessonIndex : null;
   const nextLesson = lessonIndex + 1 < moduleItem.lessons.length ? lessonIndex + 2 : null;
-  
+
   return (
     <div className="max-w-6xl mx-auto space-y-6">
       {/* Header */}
@@ -135,18 +184,16 @@ export default function LessonView({
                 <div className="flex flex-wrap gap-3">
                   <Link
                     href={prevLesson ? `/modules/${moduleItem.slug}/${prevLesson}` : `/modules/${moduleItem.slug}/${lessonIndex + 1}`}
-                    className={`inline-flex items-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition ${
-                      prevLesson ? "border-[#1E5631] text-[#1E5631] hover:bg-[#ECF4EA]" : "cursor-not-allowed border-gray-200 text-gray-400"
-                    }`}
+                    className={`inline-flex items-center gap-2 rounded-full border px-4 py-3 text-sm font-semibold transition ${prevLesson ? "border-[#1E5631] text-[#1E5631] hover:bg-[#ECF4EA]" : "cursor-not-allowed border-gray-200 text-gray-400"
+                      }`}
                   >
                     <ChevronLeft className="w-4 h-4" />
                     Previous
                   </Link>
                   <Link
                     href={nextLesson ? `/modules/${moduleItem.slug}/${nextLesson}` : `/modules/${moduleItem.slug}/${lessonIndex + 1}`}
-                    className={`inline-flex items-center gap-2 rounded-full bg-[#A36A3B] px-4 py-3 text-sm font-semibold text-white transition ${
-                      nextLesson ? "hover:bg-[#8F5B30]" : "opacity-60 cursor-not-allowed"
-                    }`}
+                    className={`inline-flex items-center gap-2 rounded-full bg-[#A36A3B] px-4 py-3 text-sm font-semibold text-white transition ${nextLesson ? "hover:bg-[#8F5B30]" : "opacity-60 cursor-not-allowed"
+                      }`}
                   >
                     Next
                     <ChevronRight className="w-4 h-4" />
