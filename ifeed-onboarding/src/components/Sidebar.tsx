@@ -9,8 +9,6 @@ import {
   FlaskConical, 
   Sliders, 
   Award, 
-  Settings, 
-  HelpCircle, 
   Download,
   ChevronLeft 
 } from "lucide-react";
@@ -118,15 +116,8 @@ export default function Sidebar() {
           Download Module
         </Link>
   
-        <div className="space-y-1 text-sm text-emerald-100">
-          <button className="w-full flex items-center gap-3 px-3 py-2 hover:bg-emerald-800/50 rounded-lg transition-colors text-left">
-            <Settings className="w-4 h-4" />
-            <span>Settings</span>
-          </button>
-          <button className="w-full flex items-center gap-3 px-3 py-2 hover:bg-emerald-800/50 rounded-lg transition-colors text-left">
-            <HelpCircle className="w-4 h-4" />
-            <span>Support</span>
-          </button>
+        <div className="space-y-5 text-sm text-emerald-100">
+        
         </div>
       </div>
     </aside>
