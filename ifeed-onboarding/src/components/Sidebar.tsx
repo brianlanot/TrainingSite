@@ -90,7 +90,7 @@ export default function Sidebar() {
           <>
             <div>
               <h2 className="text-2xl font-bold tracking-tight">Curriculum</h2>
-              <p className="text-xs text-emerald-200/70 mt-1">6 Modules • 20 Lessons</p>
+              <p className="text-xs text-emerald-200/70 mt-1">5 Modules • 13 Lessons</p>
             </div>
   
             <nav className="space-y-1">
