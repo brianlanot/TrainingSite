@@ -2,6 +2,30 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight, PlayCircle, CheckSquare } from "lucide-react";
 import type { ModuleItem } from "./curriculumData";
 
+/** Renders step text, splitting out any "Try:" note into a callout box. */
+function StepText({ text }: { text: string }) {
+  const tryIndex = text.indexOf("\n\nTry:");
+  if (tryIndex === -1) {
+    return <p className="mt-1 text-m text-gray-600 whitespace-pre-line">{text}</p>;
+  }
+  const mainText = text.slice(0, tryIndex).trim();
+  const tryText = text.slice(tryIndex + 2).trim(); // skip the leading "\n\n"
+  return (
+    <>
+      {mainText && (
+        <p className="mt-1 text-m text-gray-600 whitespace-pre-line">{mainText}</p>
+      )}
+      <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3">
+        <p className="text-sm text-amber-800 whitespace-pre-line leading-relaxed">
+          <span className="font-bold">{tryText.split("\n")[0]}</span>
+          {tryText.includes("\n") ? "\n" + tryText.slice(tryText.indexOf("\n") + 1) : ""}
+        </p>
+      </div>
+    </>
+  );
+}
+
+
 type LessonViewProps = {
   moduleItem: ModuleItem;
   lessonIndex: number;
@@ -75,9 +99,7 @@ export default function LessonView({
                             ? `Step ${idx + 1}. ${stepTitles[idx]}`
                             : `Step ${idx + 1}`}
                         </div>
-                        <p className="mt-1 text-m text-gray-600 whitespace-pre-line">
-                          {stepText}
-                        </p>
+                        <StepText text={stepText} />
 
                         {/* Check if the step has an array of images and ensure it's not empty */}
                         {lessonItem?.stepImages && lessonItem.stepImages[idx] && lessonItem.stepImages[idx].length > 0 ? (
