@@ -306,7 +306,7 @@ export const curriculumData: ModuleItem[] = [
     id: 4,
     slug: "formulation",
     title: "Feed Formulation",
-    lessonsCount: 6,
+    lessonsCount: 5,
     duration: "40 min",
     objective: "Create single and group carabao formulations, configure carabao profiles, add ingredients and nutrients, set formulation constraints, and interpret optimization results.",
     completed: false,
