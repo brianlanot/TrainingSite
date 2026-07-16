@@ -481,7 +481,7 @@ export const curriculumData: ModuleItem[] = [
         ["/advancedManualAddIngredient.jpg"],
         ["/advancedManualSetPercentages.jpg"],
         ["/advancedManualOptimize.jpg", "/advancedManualOptimizeResults.jpg"],
-        ["/advancedManualDeleteIngredient.jpg"]
+        ["/advancedFixedDeleteEntry.jpg"]
       ],
       testCaseGroups: [
         {
@@ -532,30 +532,7 @@ export const curriculumData: ModuleItem[] = [
         }
       ]
     },
-    {
-      id: "5.2",
-      title: "Analytics and Reporting",
-      duration: "15 min",
-      isCompleted: false,
-      summary: "Learn how to generate reports and use analytics for decision-making.",
-      steps: [
-        "Open the reporting dashboard and review key metrics.",
-        "Use filters to focus on the data you need.",
-        "Apply insights to improve future plans."
-      ]
-    },
-    {
-      id: "5.3",
-      title: "Advanced Workflow Tips",
-      duration: "10 min",
-      isCompleted: false,
-      summary: "Discover expert workflow tips for faster and more accurate planning.",
-      steps: [
-        "Use templates and shortcuts to save time.",
-        "Keep your ingredient library well organized.",
-        "Leverage advanced features for repeatable success."
-      ]
-    }
+
   ]
 }
 ];
