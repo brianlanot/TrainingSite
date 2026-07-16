@@ -55,7 +55,7 @@ export const curriculumData: ModuleItem[] = [
         steps: [
           "iFeed version 2 is a web-based feed formulation cost optimization system designed to assist carabao farmers in creating optimal feed formulations through ingredient and nutrient management. It utilizes the Simplex Algorithm to generate formulations based on nutritional requirements derived from user specifications. User specifications are made easier through a “google form like” survey to identify the proper feed nutrients the carabao needs. The system is purely focused on carabao feed formulations and formulation maintenance.\n\nLink: https://i-feed-v2.vercel.app/"
         ],
-        stepTitles: ["Open ifeedv2 app"],
+        stepTitles: ["Open iFeed V2"],
 
       },
       {
