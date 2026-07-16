@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, PlayCircle, Download, CheckSquare } from "lucide-react";
+import { ChevronLeft, ChevronRight, PlayCircle, CheckSquare } from "lucide-react";
 import type { ModuleItem } from "./curriculumData";
 
 type LessonViewProps = {
@@ -102,70 +102,7 @@ export default function LessonView({
                 </div>
               )}
 
-              {/* Single Test Cases Table */}
-              {testCases && testCases.length > 0 && (
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-sm text-[#4A7A5A] font-semibold uppercase tracking-[0.16em]">
-                    <CheckSquare className="w-4 h-4" />
-                    Test Cases
-                  </div>
-                  <div className="overflow-hidden rounded-2xl border border-gray-200">
-                    <table className="w-full text-sm">
-                      <thead>
-                        <tr className="bg-[#1E5631] text-white">
-                          <th className="px-5 py-3 text-left font-semibold">Test Case</th>
-                          <th className="px-5 py-3 text-left font-semibold">Expected Result</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {testCases.map((tc, idx) => (
-                          <tr key={idx} className={idx % 2 === 0 ? "bg-white" : "bg-[#F8FAF7]"}>
-                            <td className="px-5 py-3 text-gray-700 border-t border-gray-100">{tc.testCase}</td>
-                            <td className="px-5 py-3 text-gray-600 border-t border-gray-100">{tc.expectedResult}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              )}
 
-              {/* Multiple Test Case Groups */}
-              {testCaseGroups && testCaseGroups.length > 0 && (
-                <div className="space-y-6">
-                  <div className="flex items-center gap-3 text-sm text-[#4A7A5A] font-semibold uppercase tracking-[0.16em]">
-                    <CheckSquare className="w-4 h-4" />
-                    Test Cases
-                  </div>
-                  {testCaseGroups.map((group, gIdx) => (
-                    <div key={gIdx} className="space-y-2">
-                      <h4 className="text-sm font-bold text-[#1E5631]">{group.groupTitle}</h4>
-                      <div className="overflow-hidden rounded-2xl border border-gray-200">
-                        <table className="w-full text-sm">
-                          <thead>
-                            <tr className="bg-[#1E5631] text-white">
-                              <th className="px-5 py-3 text-left font-semibold">
-                                {group.headerLabels ? group.headerLabels[0] : "Test Case"}
-                              </th>
-                              <th className="px-5 py-3 text-left font-semibold">
-                                {group.headerLabels ? group.headerLabels[1] : "Expected Result"}
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {group.cases.map((tc, idx) => (
-                              <tr key={idx} className={idx % 2 === 0 ? "bg-white" : "bg-[#F8FAF7]"}>
-                                <td className="px-5 py-3 text-gray-700 border-t border-gray-100">{tc.testCase}</td>
-                                <td className="px-5 py-3 text-gray-600 border-t border-gray-100">{tc.expectedResult}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
 
               {/* Prev / Next Navigation */}
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between pt-2 border-t border-gray-100">
@@ -200,21 +137,70 @@ export default function LessonView({
         </div>
 
         <aside className="space-y-6">
-          <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-[#1E5631]">Essential Documents</h2>
-            <div className="mt-5 space-y-3">
-              {[
-                "Inventory Excel Template",
-                "Local Ingredient Guide",
-                "Nutrient Cheat Sheet",
-              ].map((label) => (
-                <button key={label} className="w-full flex items-center justify-between gap-3 rounded-2xl bg-[#A36A3B]/10 px-4 py-3 text-sm text-[#8B5A2B] transition hover:bg-[#A36A3B]/20">
-                  <span>{label}</span>
-                  <Download className="w-4 h-4" />
-                </button>
-              ))}
+          {/* Test Cases Sidebar */}
+          {(testCases && testCases.length > 0) || (testCaseGroups && testCaseGroups.length > 0) ? (
+            <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
+              <div className="flex items-center gap-2 mb-5">
+                <CheckSquare className="w-5 h-5 text-[#4A7A5A]" />
+                <h2 className="text-lg font-semibold text-[#1E5631]">Test Cases</h2>
+              </div>
+
+              {/* Single flat list */}
+              {testCases && testCases.length > 0 && (
+                <div className="overflow-hidden rounded-2xl border border-gray-200">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="bg-[#1E5631] text-white">
+                        <th className="px-4 py-3 text-left font-semibold">Test Case</th>
+                        <th className="px-4 py-3 text-left font-semibold">Expected Result</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {testCases.map((tc, idx) => (
+                        <tr key={idx} className={idx % 2 === 0 ? "bg-white" : "bg-[#F8FAF7]"}>
+                          <td className="px-4 py-3 text-gray-700 border-t border-gray-100">{tc.testCase}</td>
+                          <td className="px-4 py-3 text-gray-600 border-t border-gray-100">{tc.expectedResult}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+
+              {/* Grouped test cases */}
+              {testCaseGroups && testCaseGroups.length > 0 && (
+                <div className="space-y-5">
+                  {testCaseGroups.map((group, gIdx) => (
+                    <div key={gIdx} className="space-y-2">
+                      <h4 className="text-sm font-bold text-[#1E5631]">{group.groupTitle}</h4>
+                      <div className="overflow-hidden rounded-2xl border border-gray-200">
+                        <table className="w-full text-sm">
+                          <thead>
+                            <tr className="bg-[#1E5631] text-white">
+                              <th className="px-4 py-3 text-left font-semibold">
+                                {group.headerLabels ? group.headerLabels[0] : "Test Case"}
+                              </th>
+                              <th className="px-4 py-3 text-left font-semibold">
+                                {group.headerLabels ? group.headerLabels[1] : "Expected Result"}
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {group.cases.map((tc, idx) => (
+                              <tr key={idx} className={idx % 2 === 0 ? "bg-white" : "bg-[#F8FAF7]"}>
+                                <td className="px-4 py-3 text-gray-700 border-t border-gray-100">{tc.testCase}</td>
+                                <td className="px-4 py-3 text-gray-600 border-t border-gray-100">{tc.expectedResult}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-          </div>
+          ) : null}
 
           <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
             <h3 className="text-sm font-semibold uppercase tracking-[0.24em] text-[#7C9B7B]">Module details</h3>

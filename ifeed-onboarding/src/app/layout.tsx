@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { Suspense } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
-import ResourcesSidebar from "../components/resourcesSidebar"; // Import the Resources sidebar
+import ResourcesSidebar from "../components/resourcesSidebar";
 import "./globals.css";
 
 export default function RootLayout({
